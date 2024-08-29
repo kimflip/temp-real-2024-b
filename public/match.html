@@ -30,11 +30,17 @@
     />
     <script>
       document.addEventListener("DOMContentLoaded", async function () {
-        const pairName = document.getElementById("pairName");
-        const pairActive = document.getElementById("pairActive");
-        pairName.innerHTML = localStorage.getItem("pairName");
-        pairActive.innerHTML = localStorage.getItem("pairActive");
+        // 要素取得
+        const pairNameElement = document.getElementById("pairName");
+        const pairActiveElement = document.getElementById("pairActive");
+        // ローカルストレージから取得
+        const pairName = localStorage.getItem("pairName")
+        const pairActive = localStorage.getItem("pairActive")
+        // htmlに反映
+        pairNameElement.innerHTML = pairName;
+        pairActiveElement.innerHTML = pairActive;
 
+        // ホームに戻る
         const homeButton = document.getElementById("homeButton");
         homeButton.addEventListener("click", function (event) {
           console.log("Home button clicked");
@@ -47,8 +53,8 @@
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify({
             // データベースのアクセスに必要なキー
-            pair_name: pairName.innerHTML,
-            pair_act: pairActive.innerHTML,
+            pair_name: pairName,
+            pair_act: pairActive,
           }),
         });
 
