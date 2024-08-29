@@ -52,11 +52,11 @@
             // 画像をサーバーに取ってきてもらう
             method: "GET",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              // データベースのアクセスに必要なキー
-              pair_name: pairName.localStorage.getItem("pairName"),
-              pair_act: pairActive.localStorage.getItem("pairActive"),
-            }),
+            // body: JSON.stringify({
+            //   // データベースのアクセスに必要なキー
+            //   pair_name: pairName.localStorage.getItem("pairName"),
+            //   pair_act: pairActive.localStorage.getItem("pairActive"),
+            // }),
           });
 
           const json = await activeImage.json();
