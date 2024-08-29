@@ -47,20 +47,22 @@
           window.location.href = "/main.html";
         });
 
-        const activeImage = await fetch("/image",{
-          // 画像をサーバーに取ってきてもらう
-          method: "GET",
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify({
-            // データベースのアクセスに必要なキー
-            pair_name: pairName,
-            pair_act: pairActive,
-          }),
-        });
+        if (pairName != null && pairActive != null) { // 相手の名前と相手の出来事は必須
+          const activeImage = await fetch(`/image?pairName=${pairName}&pairActive=${pairActive}`, {
+            // 画像をサーバーに取ってきてもらう
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              // データベースのアクセスに必要なキー
+              pair_name: pairName.localStorage.getItem("pairName"),
+              pair_act: pairActive.localStorage.getItem("pairActive"),
+            }),
+          });
 
-        const json = await activeImage.json();
-        const pairActImage = json["image"];
-        document.getElementById("activeImg").src = pairActImage;  // 相手のアクティビティの画像をここに入れる
+          const json = await activeImage.json();
+          const pairActImage = json["image"];
+          document.getElementById("activeImg").src = pairActImage;  // 相手のアクティビティの画像をここに入れる
+        }
       });
     </script>
   </head>
