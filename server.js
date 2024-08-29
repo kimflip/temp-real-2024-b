@@ -115,7 +115,7 @@ Deno.serve({
         console.log("eee");
         const url = new URL(req.url);
         const pairName = url.searchParams.get("pair_name");
-        const pairAct = url.searchParams.get("pair_act");
+        const pairAct = url.searchParams.get("pair_active");
         // const json = await req.json();  // JSONのデータを受け取る
         // const pairName = json["pair_name"]; // ペアした人の名前、活動をGet
         // const pairAct = json["pair_act"];

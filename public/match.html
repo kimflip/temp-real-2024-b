@@ -48,7 +48,7 @@
         });
 
         if (pairName != null && pairActive != null) { // 相手の名前と相手の出来事は必須
-          const activeImage = await fetch(`/image?pairName=${pairName}&pairActive=${pairActive}`, {
+          const activeImage = await fetch(`/image?pair_name=${pairName}&pair_active=${pairActive}`, {
             // 画像をサーバーに取ってきてもらう
             method: "GET",
             headers: { "Content-Type": "application/json" },
